@@ -44,17 +44,11 @@ export default function Register() {
 					return res.data;
 				});
 			console.log(userId);
-<<<<<<< HEAD
-			await signup(emailRef.current.value, passwordRef.current.value);
-			await updateName(userId);
-			history.push("/", );
-=======
 
 			await signup(emailRef.current.value, passwordRef.current.value);
 			setUserId(userId);
 
 			history.push("/");
->>>>>>> 3ca2d73f21e008ad863ad7f6e6c0310e58da6aa2
 		} catch {
 			setError("Failed to create an account");
 		}
