@@ -1,13 +1,9 @@
 "use strict";
 
 //const db = require("../db");
-<<<<<<< HEAD
-const Company = require("../models/Company");
-=======
 
 const Company = require("../models/Company");
 
->>>>>>> 62c6dc51e840f00c03b3d5d700486e28322c8f17
 const { LMS, web3 } = require("../web3conn");
 
 const createVacancy = async (req, res) => {

@@ -17,10 +17,11 @@ export default function Home(props) {
 
 	// if (!loggedin) {
 	// 	history.push("/");
-	// }
+	// } 
 	const [error, setError] = useState("");
 	const { currentUser, logout } = useAuth();
 	const history = useHistory();
+	console.log(currentUser.displayName);
 	async function handleLogout() {
 		setError("");
 

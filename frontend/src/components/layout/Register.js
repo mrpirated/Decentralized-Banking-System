@@ -7,6 +7,7 @@ import {
 	Dropdown,
 	DropdownButton,
 } from "react-bootstrap";
+import { auth } from "../../db";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -35,6 +36,7 @@ export default function Register() {
 			let type = 0;
 			if (Type === "Government") type = 2;
 			else if (Type === "Company") type = 1;
+			//console.log("entered" + type);
 			const userId = await axios
 				.post(config.newId, {
 					type: type,
@@ -42,9 +44,9 @@ export default function Register() {
 				.then((res) => {
 					return res.data;
 				});
-			console.log(userId);
+			//console.log(userId);
 			await signup(emailRef.current.value, passwordRef.current.value);
-			history.push("/");
+			history.push("/", );
 		} catch {
 			setError("Failed to create an account");
 		}
