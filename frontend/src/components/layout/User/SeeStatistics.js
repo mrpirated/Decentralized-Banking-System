@@ -24,6 +24,9 @@ function SeeStatistics() {
 	return (
 		<div style={{ display: "flex", flexDirection: "row" }}>
 			<Navbar titles={UserNavbar}></Navbar>
+			<div>
+				<label>Government Information</label>
+			</div>
 		</div>
 	);
 }
