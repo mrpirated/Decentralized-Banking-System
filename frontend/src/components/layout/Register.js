@@ -18,7 +18,7 @@ export default function Register() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
-	const { signup } = useAuth();
+	const { signup, updateName } = useAuth();
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 	const history = useHistory();
@@ -44,7 +44,8 @@ export default function Register() {
 				.then((res) => {
 					return res.data;
 				});
-			//console.log(userId);
+			console.log(userId);
+			updateName(userId);
 			await signup(emailRef.current.value, passwordRef.current.value);
 			history.push("/", );
 		} catch {
