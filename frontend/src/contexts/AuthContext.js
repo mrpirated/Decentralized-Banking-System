@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../db";
-import app from "../db";
+import { auth, db } from "../db";
 
 const AuthContext = React.createContext();
 const db = app.firestore();

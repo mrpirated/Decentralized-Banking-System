@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 const firebaseConfig = {
 	apiKey: "AIzaSyDNv-liOygrY17bqUNObJ9HjH7RKCuHkJA",
 	authDomain: "decentralized-banking-system.firebaseapp.com",
@@ -14,5 +15,6 @@ const app = firebase.initializeApp(firebaseConfig);
 
 console.log(app);
 export const auth = app.auth();
+export const db = app.firestore();
 //console.log(db);
 export default app;

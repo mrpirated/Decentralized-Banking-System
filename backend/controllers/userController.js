@@ -79,10 +79,24 @@ const userToUserTransaction = async (req, res) => {
 			return id;
 		});
 };
+const getLenders = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	const result = await lms.getBankValues({ from: accounts[0] });
+	var lenders = [];
+	for (var i = 0; i < result[0].length; i++) {
+		var temp = await lms.lenders(result[0][i], { from: accounts[0] });
+		if (temp.isLender) {
+			lenders = [...lenders, web3.utils.toUtf(result[0][i])];
+		}
+	}
 
+	res.send(lenders);
+};
 module.exports = {
 	productPurchase,
 	becomeLender,
 	takeloan,
 	userToUserTransaction,
+	getLenders,
 };
