@@ -18,14 +18,16 @@ export default function Popup(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await axios
-			.post(config.createProduct, {
+			.post(config.userToUserTransaction, {
                 toid: rowData.userId,
                 amount: amount,
                 fromId: UserId
 			})
 			.then((res) => console.log(res))
 			.catch((err) => console.log(err));
-
+        setAmount(0);
+        alert('Transaction Done.');
+        setOpenPopup(false);
     };
     return (
         <Dialog open={openPopup}>

@@ -78,6 +78,7 @@ const userToUserTransaction = async (req, res) => {
 		.then((id) => {
 			return id;
 		});
+	res.send("Transaction done.")
 };
 const getLenders = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
