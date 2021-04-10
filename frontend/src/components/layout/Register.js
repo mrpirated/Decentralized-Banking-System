@@ -45,7 +45,12 @@ export default function Register() {
 				});
 			console.log(userId);
 
-			await signup(emailRef.current.value, passwordRef.current.value);
+			await signup(
+				emailRef.current.value,
+				passwordRef.current.value,
+				type,
+				userId
+			);
 			setUserId(userId);
 
 			history.push("/");
