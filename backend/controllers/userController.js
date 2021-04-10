@@ -86,8 +86,9 @@ const getLenders = async (req, res) => {
 	var lenders = [];
 	for (var i = 0; i < result[0].length; i++) {
 		var temp = await lms.lenders(result[0][i], { from: accounts[0] });
-		if (temp.isLender) {
-			lenders = [...lenders, web3.utils.toUtf(result[0][i])];
+		//console.log(temp["1"]);
+		if (temp["1"] == true) {
+			lenders = [...lenders, web3.utils.toUtf8(result[0][i])];
 		}
 	}
 
@@ -152,6 +153,19 @@ const getUserInfo = async (req, res) => {
 		res.send(user);
 	}
 };
+
+const getGovtInfo = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+
+	const govt = await lms.government({ from: accounts[0] });
+
+	const govtinfo = {
+		inhand: govt.inhand.words[0],
+		net_worth: govt.net_worth.words[0],
+	};
+	res.send(govtinfo);
+};
 module.exports = {
 	productPurchase,
 	becomeLender,
@@ -160,4 +174,5 @@ module.exports = {
 	getLenders,
 	getUserTransactions,
 	getUserInfo,
+	getGovtInfo,
 };
