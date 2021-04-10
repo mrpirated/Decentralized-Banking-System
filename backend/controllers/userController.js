@@ -29,6 +29,7 @@ const becomeLender = async (req, res) => {
 	const lms = await LMS.deployed();
 
 	const { ipm, iipm, UserId } = req.body;
+	console.log(ipm);
 	let result = await lms.becomeLender(web3.utils.fromAscii(UserId), ipm, iipm, {
 		from: accounts[0],
 	});
