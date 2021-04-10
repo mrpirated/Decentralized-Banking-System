@@ -8,7 +8,6 @@ const companyRoutes = require("./routes/company-routes");
 const userRoutes = require("./routes/user-routes");
 const auth = require("./routes/auth");
 //const initializeblockchain = require("./initializeblockchain");
-const updatedb = require("./controllers/updatedb");
 const app = express();
 
 app.use(express.json());

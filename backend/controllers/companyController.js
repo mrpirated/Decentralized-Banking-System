@@ -1,13 +1,8 @@
 "use strict";
 
 //const db = require("../db");
-const firebase = require("../db");
 const Company = require("../models/Company");
-const firestore = firebase.firestore();
 const { LMS, web3 } = require("../web3conn");
-const auth = firebase.auth();
-const db = firebase.firestore();
-const admin = require("firebase/app");
 
 const createVacancy = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
