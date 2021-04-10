@@ -8,8 +8,6 @@ const productPurchase = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
 
-	let convertedFromId = web3.utils.fromAscii(fromId);
-
 	const { productId, quantity, fromId } = req.body;
 
 	let result = await lms
