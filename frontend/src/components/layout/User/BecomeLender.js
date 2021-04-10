@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-import DataTable from '../DataTable'
+//import DataTable from '../DataTable'
 import Navbar from '../Navbar';
-import { CompanyNavbar } from './CompanyNavbar';
+//import { columns } from './TransactionList';
+import { UserNavbar } from './UserNavbar';
 
-
-function CreateVacancy() {
-    const [Vacancy, setVacancy] = useState(0);
-    const [Salary, setSalary] = useState(0);
+function BecomeLender() {
+    const [ipm, setIpm] = useState(0);
+    const [iipm, setIipm] = useState(0);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -14,7 +14,7 @@ function CreateVacancy() {
 
     return (
         <div style={{display:"flex", flexDirection:"row"}}>
-            <Navbar titles={CompanyNavbar}></Navbar>
+            <Navbar titles={UserNavbar}></Navbar>
             <div style={{ width: "50%", margin: "0 auto" }}>
                 <h1 style={{
 						display: "flex",
@@ -22,7 +22,7 @@ function CreateVacancy() {
 						alignItems: "center",
 						margin: "25px 0px",
 						padding: "0px 0px 25px",
-                }}>Create Vacancy</h1>
+                }}>Become Lender</h1>
                 <form className='form' onSubmit={handleSubmit}>
                     <div style={{
                             display: "flex",
@@ -31,8 +31,8 @@ function CreateVacancy() {
                             margin: "25px 0px",
                             padding: "0px 0px 25px",
                         }}>
-                        <label style={{paddingRight: "25px"}}>Total Vacancies:</label>
-                        <input type='text' value={Vacancy} onChange={(event) => setVacancy(event.target.value)}/>
+                        <label style={{paddingRight: "25px"}}>Interest Per Month:</label>
+                        <input type='text' value={ipm} onChange={(event) => setIpm(event.target.value)}/>
                     </div>
                     <div style={{
                             display: "flex",
@@ -41,8 +41,8 @@ function CreateVacancy() {
                             margin: "25px 0px",
                             padding: "0px 0px 25px",
                         }}>
-                        <label style={{paddingRight: "25px"}}>Salary:</label>
-                        <input type='text' value={Salary} onChange={(event) => setSalary(event.target.value)}/>
+                        <label style={{paddingRight: "25px"}}>Additional Interest Per Month:</label>
+                        <input type='text' value={iipm} onChange={(event) => setIipm(event.target.value)}/>
                     </div>
                     <div
                         style={{
@@ -61,4 +61,4 @@ function CreateVacancy() {
     )
 }
 
-export default CreateVacancy
+export default BecomeLender

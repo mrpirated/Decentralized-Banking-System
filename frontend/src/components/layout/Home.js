@@ -40,7 +40,7 @@ export default function Home(props) {
 
 	return (
 		<div>
-			<Navbar titles={CompanyNavbar} />
+			<Navbar titles={UserNavbar} />
 		</div>
 	);
 }

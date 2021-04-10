@@ -78,7 +78,7 @@ function CreateProduct() {
                             padding: "0px 0px 25px",
                         }}
                     >
-                        <input type='submit' className='btn btn-primary' value='Login' />
+                        <input type='submit' className='btn btn-primary' value='Submit' />
                     </div>
                 </form>
             </div>
