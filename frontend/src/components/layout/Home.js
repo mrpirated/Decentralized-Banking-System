@@ -9,16 +9,6 @@ import Navbar from "./Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home(props) {
-	// const [loggedin, setLoggedin] = useState(false);
-
-	// const history = useHistory();
-	// if (props.location.state.token.length > 0) {
-	// 	setLoggedin(true);
-	// }
-
-	// if (!loggedin) {
-	// 	history.push("/");
-	// }
 	const [error, setError] = useState("");
 	const { currentUser, logout, UserId } = useAuth();
 	console.log(UserId);
