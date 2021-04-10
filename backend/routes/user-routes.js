@@ -16,7 +16,7 @@ router.post("/productPurchase", productPurchase);
 router.post("/becomeLender", becomeLender);
 router.post("/takeloan", takeloan);
 router.post("/userToUserTransaction", userToUserTransaction);
-router.get("/getlenders", getLenders);
+router.get("/getLenders", getLenders);
 router.get("/getUserTransactions", getUserTransactions);
 router.get("/getUserInfo", getUserInfo);
 

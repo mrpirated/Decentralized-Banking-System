@@ -9,5 +9,6 @@
 	"userToUserTransaction": "http://localhost:4141/api/userToUserTransaction",
 	"getProducts": "http://localhost:4141/api/getProducts",
 	"productPurchase": "http://localhost:4141/api/productPurchase",
-	"takeloan": "http://localhost:4141/api/takeloan"
+	"takeloan": "http://localhost:4141/api/takeloan",
+	"getLenders": "http://localhost:4141/api/getLenders"
 }
