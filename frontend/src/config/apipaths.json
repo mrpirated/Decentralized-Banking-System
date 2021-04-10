@@ -5,5 +5,6 @@
 	"becomeLender":"https://localhost:4141/api/becomeLender",
 	"getAllCompanies":"https://localhost:4141/api/getAllCompanies",
 	"getAllUsers":"http://localhost:4141/api/getAllUsers",
-	"userToUserTransaction":"http://localhost:4141/api/userToUserTransaction"
+	"userToUserTransaction":"http://localhost:4141/api/userToUserTransaction",
+	"getProducts"
 }
