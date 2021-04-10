@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../db";
 
 const AuthContext = React.createContext();
-const db = app.firestore();
+
 export function useAuth() {
 	return useContext(AuthContext);
 }
@@ -24,25 +24,34 @@ export function AuthProvider({ children }) {
 			email: email,
 		};
 		setUserId(UserId);
+		await auth.currentUser.updateProfile({
+			displayName: UserId,
+		});
+
 		db.collection(coll).doc(currentUser.uid).set(data);
 	};
 
 	const login = async (email, password) => {
 		await auth.signInWithEmailAndPassword(email, password);
-		let data = db.collection("Users").doc(currentUser.uid);
-		if (data) {
-			setUserId(data.UserId);
-		} else {
-			data = db.collection("Companies").doc(currentUser.uid);
-			if (data) {
-				setUserId(data.UserId);
-			} else {
-				data = db.collection("Government").doc(currentUser.uid);
-				if (data) {
-					setUserId(data.UserId);
-				}
-			}
-		}
+
+		setUserId(auth.currentUser.displayName);
+		// console.log(currentUser);
+		// let data1 = await db.collection("Users").doc(currentUser.uid);
+		// let data = data1.get();
+		// if (data) {
+		// 	setUserId(data.UserId);
+		// 	console.log(data.data());
+		// } else {
+		// 	data = await db.collection("Companies").doc(currentUser.uid).get();
+		// 	if (data) {
+		// 		setUserId(data.UserId);
+		// 	} else {
+		// 		data = await db.collection("Government").doc(currentUser.uid).get();
+		// 		if (data) {
+		// 			setUserId(data.UserId);
+		// 		}
+		// 	}
+		// }
 	};
 
 	function logout() {

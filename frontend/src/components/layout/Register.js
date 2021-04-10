@@ -7,7 +7,6 @@ import {
 	Dropdown,
 	DropdownButton,
 } from "react-bootstrap";
-import { auth } from "../../db";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -67,11 +66,7 @@ export default function Register() {
 				<Card.Body>
 					<h2 className='text-center mb-4'>Sign Up</h2>
 					{error && <Alert variant='danger'>{error}</Alert>}
-					<DropdownButton
-						isExpanded={true}
-						id='dropdown-basic-button'
-						title={Type}
-					>
+					<DropdownButton id='dropdown-basic-button' title={Type}>
 						<Dropdown.Item
 							onClick={() => {
 								setType("User");

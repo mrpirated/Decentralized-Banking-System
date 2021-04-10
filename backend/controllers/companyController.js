@@ -44,7 +44,7 @@ const recruitEmployee = async (req, res) => {
 const createProduct = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-	const user = auth.currentUser;
+
 	const { cost_price, selling_price, quantity, companyId } = req.body;
 
 	let result = await lms
@@ -172,18 +172,14 @@ const getAllUsers = async (req, res) => {
 const getProducts = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-	const { companyId } = req.query;
-	const result = await lms.getCompanyValues(web3.utils.fromAscii(companyId), {
-		from: accounts[0],
-	});
-	const prod = result[2];
+	const result = await lms.getBankValues({ from: accounts[0] });
 	let products = [];
-	for (var i = 0; i < result[2]; i++) {
-		let temp = await lms.products(result[2][i], { from: accounts[0] });
+	for (var i = 0; i < result[3].length; i++) {
+		let temp = await lms.products(result[3][i], { from: accounts[0] });
 		products = [
 			...products,
 			{
-				id: web3.utils.toUtf8(result[2][i]),
+				id: web3.utils.toUtf8(result[3][i]),
 				company: web3.utils.toUtf8(temp.company),
 				cost_price: temp.cost_price.words[0],
 				selling_price: temp.selling_price.words[0],
@@ -191,6 +187,7 @@ const getProducts = async (req, res) => {
 			},
 		];
 	}
+
 	res.send(products);
 };
 // all companies
