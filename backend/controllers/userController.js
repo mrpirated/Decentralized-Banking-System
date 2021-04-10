@@ -63,17 +63,18 @@ const takeloan = async (req, res) => {
 const userToUserTransaction = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-	const user = auth.currentUser;
-	let fromId = user.displayName;
-	let convertedFromId = web3.utils.fromAscii(fromId);
 
-	const { toid, amount } = req.body;
-	let convertedToId = web3.utils.fromAscii(toid);
+	const { toid, amount, fromId } = req.body;
 
 	let result = await lms
-		.userToUserTransaction(convertedFromId, convertedToId, amount, {
-			from: accounts[0],
-		})
+		.userToUserTransaction(
+			web3.utils.fromAscii(fromId),
+			web3.utils.fromAscii(toid),
+			amount,
+			{
+				from: accounts[0],
+			}
+		)
 		.then((id) => {
 			return id;
 		});

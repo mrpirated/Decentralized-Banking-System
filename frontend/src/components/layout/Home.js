@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { auth } from '../../db';
@@ -18,12 +18,17 @@ export default function Home(props) {
 
 	// if (!loggedin) {
 	// 	history.push("/");
-	// } 
+	// }
 	const [error, setError] = useState("");
-	const { currentUser, logout } = useAuth();
+	const { currentUser, logout, UserId } = useAuth();
+	console.log(UserId);
 	const history = useHistory();
+<<<<<<< HEAD
 	const nowUser = auth.currentUser.displayName;
 	console.log(nowUser);
+=======
+	//console.log(currentUser.displayName);
+>>>>>>> 3ca2d73f21e008ad863ad7f6e6c0310e58da6aa2
 	async function handleLogout() {
 		setError("");
 
@@ -34,10 +39,13 @@ export default function Home(props) {
 			setError("Failed to log out");
 		}
 	}
+	// useEffect(() => {
+	// 	console.log(currentUser.displayName);
+	// }, [currentUser]);
 
 	return (
 		<div>
-			<Navbar titles={CompanyNavbar}/>
+			<Navbar titles={CompanyNavbar} />
 		</div>
 	);
 }
