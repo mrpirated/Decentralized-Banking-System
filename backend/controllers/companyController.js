@@ -83,9 +83,98 @@ const changeProductDetails = async (req, res) => {
 	res.send("Details changed of product ");
 };
 
+const getAllCompanies = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	const result = await lms.getBankValues({ from: accounts[0] });
+	var companies = [];
+	//console.log(result);
+	for (var i = 0; i < result[1].length; i++) {
+		let temp = await lms.companies(result[1][i], { from: accounts[0] });
+		let temp2 = await lms.getCompanyValues(result[1][i], {
+			from: accounts[0],
+		});
+		let transactions = [],
+			products = [],
+			employees = [],
+			remaining_salary = [];
+		Object.keys(temp2[0]).map((key) => {
+			transactions.push(web.utils.toUtf8(temp2[0][key]));
+		});
+		Object.keys(temp2[1]).map((key) => {
+			employees.push(web.utils.toUtf8(temp2[1][key]));
+		});
+		Object.keys(temp2[2]).map((key) => {
+			products.push(web.utils.toUtf8(temp2[2][key]));
+		});
+		Object.keys(temp2[3]).map((key) => {
+			remaining_salary.push(web.utils.toUtf8(temp2[3][key]));
+		});
+
+		//console.log(temp);
+		let t = {
+			id: web3.utils.toUtf8(result[1][i]),
+			net_worth: temp.net_worth.words[0],
+			inhand: temp.inhand.words[0],
+			income: temp.income.words[0],
+			tax_due: temp.tax_due.words[0],
+			salary: temp.salary.words[0],
+			vacancy: temp.vacancy.words[0],
+			employees: employees,
+			remaining_salary: remaining_salary,
+			transactions: transactions,
+			products: products,
+		};
+		companies = [...companies, t];
+		console.log(companies);
+		console.log(t);
+	}
+	await res.send(companies);
+	//console.log(companies);
+};
+
+const getAllUsers = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	const result = await lms.getBankValues({ from: accounts[0] });
+	var users = [];
+	//console.log(result);
+	for (var i = 0; i < result[0].length; i++) {
+		let temp = await lms.companies(result[0][i], { from: accounts[0] });
+		let temp2 = await lms.getCompanyValues(result[0][i], {
+			from: accounts[0],
+		});
+		let transactions = [],
+			companies = [];
+		Object.keys(temp2[0]).map((key) => {
+			transactions.push(web.utils.toUtf8(temp2[0][key]));
+		});
+		Object.keys(temp2[1]).map((key) => {
+			companies.push(web.utils.toUtf8(temp2[1][key]));
+		});
+
+		//console.log(temp);
+		let t = {
+			id: web3.utils.toUtf8(result[0][i]),
+			net_worth: temp.net_worth.words[0],
+			inhand: temp.inhand.words[0],
+			income: temp.income.words[0],
+			tax_due: temp.tax_due.words[0],
+			transactions: transactions,
+			companies: companies,
+		};
+		users = [...users, t];
+	}
+	await res.send(users);
+	//console.log(companies);
+};
+// all companies
+// all users
 module.exports = {
 	createVacancy,
 	recruitEmployee,
 	createProduct,
 	changeProductDetails,
+	getAllCompanies,
+	getAllUsers,
 };
