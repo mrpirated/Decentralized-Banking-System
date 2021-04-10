@@ -1,13 +1,13 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 const firebaseConfig = {
-	apiKey: "AIzaSyDVFyKTriVgV_G1xrgQz8UYdOUqg840oKY",
-	authDomain: "blockchain-banking-system.firebaseapp.com",
-	projectId: "blockchain-banking-system",
-	storageBucket: "blockchain-banking-system.appspot.com",
-	messagingSenderId: "880078256219",
-	appId: "1:880078256219:web:e30d2b284c48e49ea7677e",
-	measurementId: "G-SV0V507180",
+	apiKey: "AIzaSyDNv-liOygrY17bqUNObJ9HjH7RKCuHkJA",
+	authDomain: "decentralized-banking-system.firebaseapp.com",
+	projectId: "decentralized-banking-system",
+	storageBucket: "decentralized-banking-system.appspot.com",
+	messagingSenderId: "258229683916",
+	appId: "1:258229683916:web:f85a407db0d82c2839e469",
+	measurementId: "G-G4N400HRYC",
 };
 
 const app = firebase.initializeApp(firebaseConfig);

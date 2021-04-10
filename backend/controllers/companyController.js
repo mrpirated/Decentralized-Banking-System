@@ -1,15 +1,20 @@
 "use strict";
 
 //const db = require("../db");
+<<<<<<< HEAD
 const Company = require("../models/Company");
+=======
+
+const Company = require("../models/Company");
+
+>>>>>>> 62c6dc51e840f00c03b3d5d700486e28322c8f17
 const { LMS, web3 } = require("../web3conn");
 
 const createVacancy = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-	const user = auth.currentUser;
-	let companyId = user.displayName;
-	const { vacancy, salary } = req.body;
+
+	const { vacancy, salary, companyId } = req.body;
 
 	let result = await lms
 		.createVacancy(web3.utils.asciiToHex(companyId), vacancy, salary, {
@@ -18,24 +23,14 @@ const createVacancy = async (req, res) => {
 		.then((id) => {
 			return id;
 		});
-
-	// if (result.logs[0].args["0"]) {
-	// 	await db.collection("Companies").doc(companyId).update({
-	// 		salary: salary,
-	// 		vacancy: vacancy,
-	// 	});
-	// }
-
-	res.send("Vacancy created.");
+	res.send("Vacancy created");
 };
 
 const recruitEmployee = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-	const user = auth.currentUser;
-	let companyId = user.displayName;
 
-	const { userId } = req.body;
+	const { userId, companyId } = req.body;
 
 	let result = await lms
 		.recruitEmployee(
@@ -47,23 +42,6 @@ const recruitEmployee = async (req, res) => {
 			return id;
 		});
 
-	// console.log(result.logs[0].args["0"]);
-	// if (result.logs[0].args["0"]) {
-	// 	const re = await db
-	// 		.collection("Companies")
-	// 		.doc(companyId)
-	// 		.update({
-	// 			employees: admin.firestore.FieldValue.arrayUnion(userId),
-	// 		});
-	// 	await db
-	// 		.collection("Users")
-	// 		.doc(userId)
-	// 		.update({
-	// 			companies: admin.firestore.FieldValue.arrayUnion(companyId),
-	// 		});
-	// 	console.log(re);
-	// }
-
 	res.send(" Recruited ");
 };
 
@@ -71,14 +49,18 @@ const createProduct = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
 	const user = auth.currentUser;
-	let companyId = user.displayName;
-	let convertedCompanyId = web3.utils.fromAscii(companyId);
-	const { cost_price, selling_price, quantity } = req.body;
+	const { cost_price, selling_price, quantity, companyId } = req.body;
 
 	let result = await lms
-		.createProduct(convertedCompanyId, cost_price, selling_price, quantity, {
-			from: accounts[0],
-		})
+		.createProduct(
+			web3.utils.fromAscii(companyId),
+			cost_price,
+			selling_price,
+			quantity,
+			{
+				from: accounts[0],
+			}
+		)
 		.then((id) => {
 			return id;
 		});
@@ -91,11 +73,9 @@ const changeProductDetails = async (req, res) => {
 	const lms = await LMS.deployed();
 	const { productId, cost_price, selling_price, quantity } = req.body;
 
-	let convertedProductId = web3.utils.fromAscii(productId);
-
 	let result = await lms
 		.changeProductDetails(
-			convertedProductId,
+			web3.utils.fromAscii(productId),
 			cost_price,
 			selling_price,
 			quantity,
