@@ -78,7 +78,7 @@ contract Global {
     mapping(bytes32 => Product) public products;
     mapping(bytes32 => Lender) public lenders;
 
-    constructor() public {
+    constructor () public {
         decentralizedBank = DecentralizedBank({
             id: "decentralizedBankid",
             inhand: 0,
