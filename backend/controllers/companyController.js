@@ -44,7 +44,6 @@ const recruitEmployee = async (req, res) => {
 const createProduct = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-	const user = auth.currentUser;
 	const { cost_price, selling_price, quantity, companyId } = req.body;
 
 	let result = await lms
