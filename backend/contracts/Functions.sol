@@ -59,19 +59,8 @@ contract Functions is Global{
             if(companies[decentralizedBank.companies[i]].isCompany){
             transaction_count++;
             int256 amount=0;
-            if(companies[decentralizedBank.companies[i]].income>250000){
-                if(companies[decentralizedBank.companies[i]].income>500000){
-                    amount+=250000*5/100;
-                    if(companies[decentralizedBank.companies[i]].income>1000000){
-                        amount+=500000*10/100;
-                        amount+=(companies[decentralizedBank.companies[i]].income-1000000)*30/100;
-                    }else{
-                        amount+=(companies[decentralizedBank.companies[i]].income-500000)*10/100;
-                    }
-                }else{
-                    amount+=(companies[decentralizedBank.companies[i]].income-250000)*5/100;
-                }
-            }
+            amount+=(companies[decentralizedBank.companies[i]].income)*30/100;
+            
             //amount+=companies[decentralizedBank.companies[i]].income*20/100;
             bytes32 tid = stringToBytes32(string(abi.encodePacked("tax",uint2str(transaction_count),"_1")));
             Transaction memory newtransaction=Transaction(tid,true,decentralizedBank.companies[i],"decentralizedBankid",amount,false,"");
