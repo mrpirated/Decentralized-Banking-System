@@ -24,6 +24,7 @@ export default function DataTable(props) {
 				columns={props.columns}
 				actions={props.actions}
 				options={options}
+				isEditable={true}
 			/>
 		</React.Fragment>
 	);
