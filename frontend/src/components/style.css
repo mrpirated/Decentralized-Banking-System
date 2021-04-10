@@ -1,13 +1,9 @@
-#nav {
-    width: 100%;
-    float: left;
-    margin: 0 0 3em 0;
-    padding: 0;
-    list-style: none; }
+
 #nav li {
-    float: left; }
+    float: inline-start; }
 #nav {
-    width: 100%;
+    width: fit-content;
+    height :100vh;
     float: left;
     margin: 0 0 3em 0;
     padding: 0;

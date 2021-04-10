@@ -1,0 +1,4 @@
+{
+	"newId": "http://localhost:4444/api/newId",
+	"signup": "http://localhost:4444/api/signup"
+}
