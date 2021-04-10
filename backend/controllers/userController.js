@@ -93,6 +93,12 @@ const getLenders = async (req, res) => {
 
 	res.send(lenders);
 };
+const getUserTransactions = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	const result = await lms.getBankValues({ from: accounts[0] });
+	for (var i = 0; i < result[0].length; i++) {}
+};
 module.exports = {
 	productPurchase,
 	becomeLender,

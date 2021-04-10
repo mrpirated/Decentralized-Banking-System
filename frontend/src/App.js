@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/layout/Register";
 import Login from "./components/layout/Login";
-import User from "./components/layout/User";
 import PrivateRoute from "./components/layout/PrivateRoute";
 import UpdateProfile from "./components/layout/UpdateProfile";
 import Company from "./components/layout/Company";
@@ -31,11 +30,8 @@ function App() {
 						<PrivateRoute path='/update-profile' component={UpdateProfile} />
 						<Route exact path='/register' component={Register} />
 						<Route exact path='/login' component={Login} />
-						<PrivateRoute exact path='/user' component={User} />
 						<PrivateRoute exact path='/company' component={Company} />
 						<PrivateRoute exact path='/' component={Login} />
-						<PrivateRoute exact path='/user' component={User} />
-						<PrivateRoute exact path='/company' component={Company} />
 						<PrivateRoute exact path='/applyForJob' component={ApplyForJob} />
 						<PrivateRoute
 							exact

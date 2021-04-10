@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react'
 import DataTable from '../DataTable'
 import Navbar from '../Navbar';
 import { useHistory } from "react-router-dom";
-import { column } from './UsertoUserList';
+import { column } from './Takeloanlist';
 import { UserNavbar } from './UserNavbar';
 import axios from "axios";
-import Popup from './UserToUserTransactionPopup';
+import { isBsProp } from 'react-bootstrap/lib/utils/bootstrapUtils';
 
 const config = require("../../../config/apipaths.json");
 
-function UsertoUser() {
+function TakeLoan() {
     const [data, setData] = useState([{}]);
     const [openPopup, setOpenPopup] = useState(false);
     const [RowData, setRowData] = useState();
@@ -18,7 +18,7 @@ function UsertoUser() {
         //console.log(config.getAllUsers);
         async function fetchData() {
             const result = await axios
-                .get(config.getAllUsers)
+                .get(config.getLenders)
                 .then((res) => {
                     console.log("hello");
                     console.log(res.data);
@@ -27,7 +27,9 @@ function UsertoUser() {
                     for (let i = 0; i < res.data.length; i++) {
                         let t = {
                             num: i + 1,
-                            userId: res.data[i].id
+                            userId: res.data[i].id,
+                            ipm:res.data[i].ipm,
+                            iipm : res.data[i].iipm
                         };
                         temp.push(t);
                     }
@@ -52,6 +54,8 @@ function UsertoUser() {
 		},
 	];
 
+    
+   
     return (
         <div style={{display:"flex", flexDirection:"row"}}>
             <Navbar titles={UserNavbar}></Navbar>
@@ -60,7 +64,7 @@ function UsertoUser() {
 				openPopup={openPopup}
 				setOpenPopup={setOpenPopup}
 			></Popup>
-            <DataTable title="Users List" actions={actions} columns={column} data={data}/>
+            <DataTable title="Take Loan" actions={actions} columns={column} data = {data} />
         </div>
     )
 }
