@@ -11,7 +11,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Home(props) {
 	const [error, setError] = useState("");
 	const { currentUser, logout, UserId } = useAuth();
+	const [DisplayNavbar, setDisplayNavbar] = useState(UserNavbar);
 	console.log(UserId);
+	useEffect(() => {
+		if (UserId.startsWith("company")) {
+			setDisplayNavbar(CompanyNavbar);
+		}
+	}, [UserId]);
+	
 	const history = useHistory();
 	//console.log(currentUser.displayName);
 	async function handleLogout() {
@@ -30,7 +37,7 @@ export default function Home(props) {
 
 	return (
 		<div>
-			<Navbar titles={UserNavbar} />
+			<Navbar titles={DisplayNavbar} />
 		</div>
 	);
 }
