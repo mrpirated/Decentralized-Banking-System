@@ -1,3 +1,4 @@
 {
-	"newId": "http://localhost:4141/api/newId"
+	"newId": "http://localhost:4141/api/newId",
+	"createVacancy": "http://localhost:4141/api/createVacancy"
 }
