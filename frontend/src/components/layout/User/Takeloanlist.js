@@ -4,12 +4,12 @@ export const columns = [
 		field: "num",
 	},
 	{
-		title: "Company",
-		field: "name",
+		title: "UserID",
+		field: "userid",
 	},
 	{
-		title: "Amount",
-		field: "Amount",
+		title: "ipm",
+		field: "ipm",
     },
 	// {
 	// 	title: "Barcode",
@@ -17,7 +17,7 @@ export const columns = [
 	// },
 	
 	{
-		title: "Field4",
-		field: "field4",
+		title: "iipm",
+		field: "iipm",
 	}
 ];
