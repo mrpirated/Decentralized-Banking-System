@@ -30,8 +30,8 @@ const becomeLender = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
 
-	const { ipm, iipm, userId } = req.body;
-	let result = await lms.becomeLender(web3.utils.fromAscii(userId), ipm, iipm, {
+	const { ipm, iipm, UserId } = req.body;
+	let result = await lms.becomeLender(web3.utils.fromAscii(UserId), ipm, iipm, {
 		from: accounts[0],
 	});
 
@@ -78,7 +78,7 @@ const userToUserTransaction = async (req, res) => {
 		.then((id) => {
 			return id;
 		});
-	res.send("Transaction done.")
+	res.send("Transaction done.");
 };
 const getLenders = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
@@ -98,24 +98,60 @@ const getUserTransactions = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
 	const { UserId } = req.query;
+	console.log(UserId);
 	let transactions = [];
 	const tran = await lms.getUserValues(web3.utils.fromAscii(UserId), {
 		from: accounts[0],
 	});
+	//console.log(tran);
 
-	for (var i = 0; i < tran.length; i++) {
-		let temp = await lms.transactions(tran[i], { from: accounts[0] });
+	for (var i = 0; i < tran[0].length; i++) {
+		let temp = await lms.transactions(tran[0][i], { from: accounts[0] });
 		let t = {
-			id: web3.utils.toUtf(tran[i]),
-			fromid: web3.utils.toUtf(temp.fromid),
-			toid: web3.utils.toUtf(temp.toid),
+			id: web3.utils.toUtf8(tran[0][i]),
+			fromid: web3.utils.toUtf8(temp.fromid),
+			toid: web3.utils.toUtf8(temp.toid),
 			amount: temp.amount.words[0],
-			summary: web3.utils.toUtf(temp.summary),
+			summary: web3.utils.toUtf8(temp.summary),
 			success: temp.success,
 		};
 		transactions = [...transactions, t];
 	}
 	res.send(transactions);
+};
+
+const getUserInfo = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+
+	const { UserId } = req.query;
+	if (UserId.startsWith("company")) {
+		const temp = await lms.companies(web3.utils.fromAscii(UserId), {
+			from: accounts[0],
+		});
+		const company = {
+			id: UserId,
+			net_worth: temp.net_worth.words[0],
+			inhand: temp.inhand.words[0],
+			income: temp.income.words[0],
+			tax_due: temp.tax_due.words[0],
+			salary: temp.salary.words[0],
+			vacancy: temp.vacancy.words[0],
+		};
+		res.send(company);
+	} else {
+		const temp = await lms.users(web3.utils.fromAscii(UserId), {
+			from: accounts[0],
+		});
+		const user = {
+			id: UserId,
+			net_worth: temp.net_worth.words[0],
+			inhand: temp.inhand.words[0],
+			income: temp.income.words[0],
+			tax_due: temp.tax_due.words[0],
+		};
+		res.send(user);
+	}
 };
 module.exports = {
 	productPurchase,
@@ -124,4 +160,5 @@ module.exports = {
 	userToUserTransaction,
 	getLenders,
 	getUserTransactions,
+	getUserInfo,
 };
