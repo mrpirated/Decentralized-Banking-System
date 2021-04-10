@@ -5,11 +5,14 @@ import { useHistory } from "react-router-dom";
 import { column } from './UsertoUserList';
 import { UserNavbar } from './UserNavbar';
 import axios from "axios";
+import Popup from './UserToUserTransactionPopup';
 
 const config = require("../../../config/apipaths.json");
 
 function UsertoUser() {
     const [data, setData] = useState([{}]);
+    const [openPopup, setOpenPopup] = useState(false);
+    const [RowData, setRowData] = useState();
     const history = useHistory();
     useEffect(() => {
         //console.log(config.getAllUsers);
@@ -41,9 +44,10 @@ function UsertoUser() {
 		{
 			icon: "more",
 			tooltip: "More Details",
-			onClick: (event, rowData) => {
-				history.push("/", { rowData: rowData });
-				console.log(rowData);
+            onClick: (event, rowData) => {
+                console.log(rowData);
+                setRowData(rowData);
+                setOpenPopup(true);
 			},
 		},
 	];
@@ -51,6 +55,11 @@ function UsertoUser() {
     return (
         <div style={{display:"flex", flexDirection:"row"}}>
             <Navbar titles={UserNavbar}></Navbar>
+            <Popup
+				rowData={RowData}
+				openPopup={openPopup}
+				setOpenPopup={setOpenPopup}
+			></Popup>
             <DataTable title="Users List" actions={actions} columns={column} data={data}/>
         </div>
     )
