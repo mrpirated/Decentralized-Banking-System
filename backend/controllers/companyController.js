@@ -80,7 +80,6 @@ const changeProductDetails = async (req, res) => {
 		.then((id) => {
 			return id;
 		});
-
 	res.send("Details changed of product ");
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
@@ -20,6 +20,7 @@ export default function Home(props) {
 	// }
 	const [error, setError] = useState("");
 	const { currentUser, logout } = useAuth();
+	console.log(currentUser);
 	const history = useHistory();
 	async function handleLogout() {
 		setError("");
@@ -31,10 +32,13 @@ export default function Home(props) {
 			setError("Failed to log out");
 		}
 	}
+	// useEffect(() => {
+	// 	console.log(currentUser.displayName);
+	// }, [currentUser]);
 
 	return (
 		<div>
-			<Navbar titles={CompanyNavbar}/>
+			<Navbar titles={CompanyNavbar} />
 		</div>
 	);
 }
