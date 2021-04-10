@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react'
 import DataTable from '../DataTable'
 import Navbar from '../Navbar';
 import { useHistory } from "react-router-dom";
-import { column } from './Takeloanlist';
+import { columns } from './Takeloanlist';
 import { UserNavbar } from './UserNavbar';
 import axios from "axios";
-import { isBsProp } from 'react-bootstrap/lib/utils/bootstrapUtils';
+import Popup from "./TakeLoanPopup";
 
 const config = require("../../../config/apipaths.json");
 
@@ -27,7 +27,7 @@ function TakeLoan() {
                     for (let i = 0; i < res.data.length; i++) {
                         let t = {
                             num: i + 1,
-                            userId: res.data[i].id,
+                            lenderid: res.data[i].id,
                             ipm:res.data[i].ipm,
                             iipm : res.data[i].iipm
                         };
@@ -55,7 +55,6 @@ function TakeLoan() {
 	];
 
     
-   
     return (
         <div style={{display:"flex", flexDirection:"row"}}>
             <Navbar titles={UserNavbar}></Navbar>
@@ -64,9 +63,9 @@ function TakeLoan() {
 				openPopup={openPopup}
 				setOpenPopup={setOpenPopup}
 			></Popup>
-            <DataTable title="Take Loan" actions={actions} columns={column} data = {data} />
+            <DataTable title="Take Loan" actions={actions} columns={columns} data = {data} />
         </div>
     )
 }
 
-export default UsertoUser
+export default TakeLoan

@@ -18,6 +18,7 @@ import UsertoUser from "./components/layout/User/UsertoUser";
 import RecruitEmployee from "./components/layout/Company/RecruitEmployee";
 import ChangeProductDetail from "./components/layout/Company/ChangeProductDetail";
 import BecomeLender from "./components/layout/User/BecomeLender";
+import TakeLoan from "./components/layout/User/TakeLoan";
 import "./App.css";
 
 function App() {
@@ -77,6 +78,11 @@ function App() {
 							exact
 							path='/becomeLender'
 							component={BecomeLender}
+						/>
+						<PrivateRoute
+							exact
+							path='/takeLoan'
+							component={TakeLoan}
 						/>
 					</Switch>
 				</AuthProvider>
