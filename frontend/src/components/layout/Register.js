@@ -45,8 +45,8 @@ export default function Register() {
 					return res.data;
 				});
 			console.log(userId);
-			updateName(userId);
 			await signup(emailRef.current.value, passwordRef.current.value);
+			await updateName(userId);
 			history.push("/", );
 		} catch {
 			setError("Failed to create an account");
