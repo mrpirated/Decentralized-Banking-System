@@ -7,6 +7,7 @@ import {
 	Dropdown,
 	DropdownButton,
 } from "react-bootstrap";
+import { auth } from "../../db";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -34,6 +35,7 @@ export default function Register() {
 			let type = 0;
 			if (Type === "Government") type = 2;
 			else if (Type === "Company") type = 1;
+			//console.log("entered" + type);
 			const userId = await axios
 				.post(config.newId, {
 					type: type,
