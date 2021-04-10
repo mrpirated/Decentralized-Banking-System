@@ -4,6 +4,7 @@ import Navbar from '../Navbar';
 import { CompanyNavbar } from './CompanyNavbar';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const config = require("../../../config/apipaths.json");
 
@@ -12,9 +13,22 @@ function CreateProduct() {
     const [CostPrice, setCostPrice] = useState(0);
     const [SellingPrice, setSellingPrice] = useState(0);
     const [Quantity, setQuantity] = useState(0);
+    const { UserId } = useAuth();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
+        await axios
+			.post(config.createProduct, {
+                cost_price: CostPrice,
+                 selling_price:SellingPrice,
+                  quantity:Quantity,
+                   companyId: UserId,
+			})
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+
+
 	};
 
     return (
@@ -78,7 +92,7 @@ function CreateProduct() {
                             padding: "0px 0px 25px",
                         }}
                     >
-                        <input type='submit' className='btn btn-primary' value='Login' />
+                        <input type='submit' className='btn btn-primary' value='Submit' />
                     </div>
                 </form>
             </div>
