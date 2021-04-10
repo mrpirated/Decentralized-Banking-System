@@ -21,9 +21,9 @@ function CreateProduct() {
         await axios
 			.post(config.createProduct, {
                 cost_price: CostPrice,
-                 selling_price:SellingPrice,
-                  quantity:Quantity,
-                   companyId: UserId,
+                selling_price:SellingPrice,
+                quantity:Quantity,
+                companyId: UserId,
 			})
 			.then((res) => console.log(res))
 			.catch((err) => console.log(err));

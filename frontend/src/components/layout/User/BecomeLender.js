@@ -21,9 +21,8 @@ function BecomeLender() {
         await axios
 			.post(config.becomeLender, {
                 ipm: ipm,
-                 iipm: iipm,
-                  userId: UserId,
-               
+                iipm: iipm,
+                userId: UserId,
                 })
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err));

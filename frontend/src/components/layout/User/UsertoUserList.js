@@ -4,19 +4,7 @@ export const column = [
 		field: "num",
 	},
 	{
-		title: "USER NAME",
-		field: "name",
-	},
-	{
-		title: "USER ID",
-		field: "id",
-	},
-	// {
-	// 	title: "Barcode",
-	// 	field: "barcode",
-	// },
-	{
-		title: "AMOUNT",
-		field: "money",
-    }
+		title: "User ID",
+		field: "userId",
+	}
 ];
