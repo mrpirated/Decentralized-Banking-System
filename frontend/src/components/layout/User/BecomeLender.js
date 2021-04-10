@@ -3,13 +3,33 @@ import React, {useState} from 'react'
 import Navbar from '../Navbar';
 //import { columns } from './TransactionList';
 import { UserNavbar } from './UserNavbar';
+import axios from "axios";
+import { useAuth } from "../../../contexts/AuthContext";
+
+const config = require("../../../config/apipaths.json");
+
+
 
 function BecomeLender() {
     const [ipm, setIpm] = useState(0);
     const [iipm, setIipm] = useState(0);
+    const { UserId } = useAuth();
 
-    const handleSubmit = (event) => {
+    const handleSubmit =async (event) => {
         event.preventDefault();
+
+        await axios
+			.post(config.becomeLender, {
+                ipm: ipm,
+                 iipm: iipm,
+                  userId: UserId,
+               
+                })
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+    
+            
+
 	};
 
     return (

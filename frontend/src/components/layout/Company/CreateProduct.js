@@ -15,7 +15,7 @@ function CreateProduct() {
     const [Quantity, setQuantity] = useState(0);
     const { UserId } = useAuth();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         await axios
