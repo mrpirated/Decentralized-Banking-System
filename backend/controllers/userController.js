@@ -94,10 +94,34 @@ const getLenders = async (req, res) => {
 
 	res.send(lenders);
 };
+const getUserTransactions = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	const { UserId } = req.query;
+	let transactions = [];
+	const tran = await lms.getUserValues(web3.utils.fromAscii(UserId), {
+		from: accounts[0],
+	});
+
+	for (var i = 0; i < tran.length; i++) {
+		let temp = await lms.transactions(tran[i], { from: accounts[0] });
+		let t = {
+			id: web3.utils.toUtf(tran[i]),
+			fromid: web3.utils.toUtf(temp.fromid),
+			toid: web3.utils.toUtf(temp.toid),
+			amount: temp.amount.words[0],
+			summary: web3.utils.toUtf(temp.summary),
+			success: temp.success,
+		};
+		transactions = [...transactions, t];
+	}
+	res.send(transactions);
+};
 module.exports = {
 	productPurchase,
 	becomeLender,
 	takeloan,
 	userToUserTransaction,
 	getLenders,
+	getUserTransactions,
 };
