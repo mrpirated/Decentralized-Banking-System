@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import { auth } from '../../db';
 import { useAuth } from "../../contexts/AuthContext";
 import { UserNavbar } from "../layout/User/UserNavbar";
 import { CompanyNavbar } from "../layout/Company/CompanyNavbar";
@@ -29,7 +30,7 @@ export default function Home(props) {
 
 	return (
 		<div>
-			<Navbar titles={CompanyNavbar} />
+			<Navbar titles={UserNavbar} />
 		</div>
 	);
 }
