@@ -88,7 +88,14 @@ const getLenders = async (req, res) => {
 		var temp = await lms.lenders(result[0][i], { from: accounts[0] });
 		//console.log(temp["1"]);
 		if (temp["1"] == true) {
-			lenders = [...lenders, web3.utils.toUtf8(result[0][i])];
+			lenders = [
+				...lenders,
+				{
+					id: web3.utils.toUtf8(result[0][i]),
+					ipm: temp.ipm.words[0],
+					iipm: temp.iipm.words[0],
+				},
+			];
 		}
 	}
 
