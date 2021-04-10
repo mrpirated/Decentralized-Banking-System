@@ -2,8 +2,10 @@
 	"newId": "http://localhost:4141/api/newId",
 	"createVacancy": "http://localhost:4141/api/createVacancy",
 	"createProduct": "http://localhost:4141/api/createProduct",
+
+	"getUserTransactions": "http://localhost:4141/api/getUserTransactions",
 	"becomeLender": "https://localhost:4141/api/becomeLender",
 	"getAllCompanies": "https://localhost:4141/api/getAllCompanies",
 	"getAllUsers": "http://localhost:4141/api/getAllUsers",
-	"getUserTransactions": "http://localhost:4141/api/getUserTransactions"
+	"userToUserTransaction": "http://localhost:4141/api/userToUserTransaction"
 }
