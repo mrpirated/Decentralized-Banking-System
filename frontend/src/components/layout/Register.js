@@ -18,7 +18,7 @@ export default function Register() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
-	const { signup, updateName, currentUser } = useAuth();
+	const { signup, setUserId } = useAuth();
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 	const history = useHistory();
@@ -46,8 +46,8 @@ export default function Register() {
 			console.log(userId);
 
 			await signup(emailRef.current.value, passwordRef.current.value);
-			await updateName(userId);
-			console.log(currentUser.displayName);
+			setUserId(userId);
+
 			history.push("/");
 		} catch {
 			setError("Failed to create an account");
