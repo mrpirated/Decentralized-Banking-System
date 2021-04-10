@@ -27,7 +27,7 @@ function PreviousTransactions() {
 					for (let i = 0; i < res.data.length; i++) {
 						let t = {
 							num: i + 1,
-							userId: res.data[i].id,
+							id: res.data[i].id,
 							fromid: res.data[i].fromid,
 							toid: res.data[i].toid,
 							amount: res.data[i].amount,

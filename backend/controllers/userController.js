@@ -34,7 +34,7 @@ const becomeLender = async (req, res) => {
 	});
 
 	//let lenderIdReturn = web3.utils.toUtf8(result.logs[0].args["0"]);
-	console.log(result);
+	//console.log(result);
 	res.send(" became lender.");
 };
 
