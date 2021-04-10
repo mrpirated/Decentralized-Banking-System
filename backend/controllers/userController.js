@@ -42,9 +42,9 @@ const becomeLender = async (req, res) => {
 const takeloan = async (req, res) => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
-
+	const { fromId, lenderid, amount, month } = req.body;
 	let result = await lms
-		.productPurchase(
+		.takeloan(
 			web3.utils.fromAscii(fromId),
 			web3.utils.fromAscii(lenderid),
 			amount,

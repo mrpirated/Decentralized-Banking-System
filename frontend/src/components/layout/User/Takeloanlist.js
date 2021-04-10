@@ -4,8 +4,8 @@ export const columns = [
 		field: "num",
 	},
 	{
-		title: "UserID",
-		field: "userid",
+		title: "Lender ID",
+		field: "lenderid",
 	},
 	{
 		title: "ipm",
