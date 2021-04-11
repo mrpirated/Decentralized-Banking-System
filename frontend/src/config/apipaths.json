@@ -13,5 +13,6 @@
 	"getGovtInfo": "http://localhost:4141/api/getGovtInfo",
 	"takeloan": "http://localhost:4141/api/takeloan",
 	"getCompanyTransactions": "http://localhost:4141/api/getCompanyTransactions",
-	"recruitEmployee": "http://localhost:4141/api/recruitEmployee"
+	"recruitEmployee": "http://localhost:4141/api/recruitEmployee",
+	"getUserInfo": "http://localhost:4141/api/getUserInfo"
 }

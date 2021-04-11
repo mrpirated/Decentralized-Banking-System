@@ -1,7 +1,7 @@
 export const UserNavbar = [
 	{
 		title: "Home",
-		url: "/home",
+		url: "/",
 	},
 	{
 		title: "Previous Transactions",
