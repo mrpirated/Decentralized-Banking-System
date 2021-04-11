@@ -20,7 +20,7 @@
 
 ## Introduction:
 
-This Project has been developed under the event Hack36 -v4 (2021) of college Motilal Nehru National Institute Of Technology, Allahabad. The project aims at tackling the problems which are currently faced by our banking system. We (BINARY BOSSES TEAM) had tried to put forward a quite basic approach yet efficient in many ways for the real-life problem. The project is based on E-Administration theme. We have tried to create a Decentralized Banking System. In this, we had created accounts such as users, comapanies and government officials for carrying out a virtual banking environment. We had tackled many issues such as payin taxes, purchasing products, user-to-user transaction, recruiting by companies, and many other vital fuctions.
+This Project has been developed under the event Hack36 -v4 (2021) of college Motilal Nehru National Institute Of Technology, Allahabad. The project aims at tackling the problems which are currently faced by our banking system. Team BINARY BOSSES had tried to put forward a quite basic approach yet efficient in many ways for the real-life problem. The project is based on E-Administration theme. We have tried to create a Decentralized Banking System. In this, we had created accounts such as users, comapanies and government officials for carrying out a virtual banking environment. We had tackled many issues such as payin taxes, purchasing products, user-to-user transaction, recruiting by companies, and many other vital fuctions.
 
 ## Demo Video Link:
 
