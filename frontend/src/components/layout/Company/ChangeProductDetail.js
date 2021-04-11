@@ -5,6 +5,7 @@ import { columns } from './ProductDetailsList';
 import { CompanyNavbar } from './CompanyNavbar';
 
 function ChangeProductdetail() {
+    
     return (
         <div style={{display:"flex", flexDirection:"row"}}>
             <Navbar titles={CompanyNavbar}></Navbar>
