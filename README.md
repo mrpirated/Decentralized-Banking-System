@@ -24,7 +24,7 @@ This Project has been developed under the event Hack36 -v4 (2021) of college Mot
 
 ## Demo Video Link:
 
-<a href="https://youtu.be/dQw4w9WgXcQ">https://youtu.be/dQw4w9WgXcQ</a>
+<a href="https://youtu.be/LmuhaPd3Abo">https://youtu.be/LmuhaPd3Abo</a>
 
 ## Presentation Link:
 
