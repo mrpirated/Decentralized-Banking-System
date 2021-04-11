@@ -12,10 +12,6 @@ export const UserNavbar = [
 		url: "/user-seestats",
 	},
 	{
-		title: "Apply For Job",
-		url: "/applyForJob",
-	},
-	{
 		title: "User to User Transaction",
 		url: "/userToUserTransaction",
 	},

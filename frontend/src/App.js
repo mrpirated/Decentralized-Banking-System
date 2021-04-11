@@ -34,7 +34,6 @@ function App() {
 						<Route exact path='/login' component={Login} />
 						<PrivateRoute exact path='/company' component={Company} />
 						<PrivateRoute exact path='/' component={Login} />
-						<PrivateRoute exact path='/applyForJob' component={ApplyForJob} />
 						<PrivateRoute
 							exact
 							path='/user-previousTransactions'
