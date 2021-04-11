@@ -17,6 +17,7 @@ function TakeLoan() {
     useEffect(() => {
         //console.log(config.getAllUsers);
         async function fetchData() {
+            console.log(config.getLenders);
             const result = await axios
                 .get(config.getLenders)
                 .then((res) => {
