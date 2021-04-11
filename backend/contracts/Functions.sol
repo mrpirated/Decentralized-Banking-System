@@ -228,6 +228,7 @@ contract Functions is Global{
         transaction_count++;
         bytes32 tid = stringToBytes32(string(abi.encodePacked("loan",uint2str(transaction_count),"_0")));
         Transaction memory newtransaction = Transaction(tid,true,lenderid,fromid,amount,false,"");
+        newtransaction.success=true;
         users[lenderid].transactions.push(tid);
         users[fromid].transactions.push(tid);
         decentralizedBank.transactions.push(tid);

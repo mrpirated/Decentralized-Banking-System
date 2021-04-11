@@ -9,6 +9,7 @@ import Navbar from "./Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 const config = require("../../config/apipaths.json");
 export default function Home(props) {
+	const history = useHistory();
 	const [error, setError] = useState("");
 	const { currentUser, logout, UserId } = useAuth();
 	const [DisplayNavbar, setDisplayNavbar] = useState(UserNavbar);
@@ -20,11 +21,11 @@ export default function Home(props) {
 		tax_due: "",
 	});
 	//console.log(UserId);
-	if (currentUser == null) {
-		window.location = "/login";
+	if (UserId == null) {
+		history.push("/login");
 	}
 	useEffect(() => {
-		if (UserId.startsWith("company")) {
+		if (UserId && UserId.startsWith("company")) {
 			setDisplayNavbar(CompanyNavbar);
 		}
 	}, [UserId]);
@@ -55,7 +56,6 @@ export default function Home(props) {
 		}
 		fetchData();
 	});
-	const history = useHistory();
 	//console.log(currentUser.displayName);
 	async function handleLogout() {
 		setError("");

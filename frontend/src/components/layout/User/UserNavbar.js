@@ -29,6 +29,6 @@ export const UserNavbar = [
 	},
 	{
 		title: "Logout",
-		url: "#",
+		url: "/login",
 	},
 ];
