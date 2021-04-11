@@ -25,15 +25,19 @@ function SeeStatistics() {
 			await axios.get(config.getAllCompanies).then((res) => {
 				console.log(res.data);
 				let temp = [];
-                    //console.log(items[0].Line);
-                    for (let i = 0; i < res.data.length; i++) {
-                        let t = {
-                            num: i + 1,
-                            userId: res.data[i].id
-                        };
-                        temp.push(t);
-                    }
-                    setData(temp);
+				//console.log(items[0].Line);
+				for (let i = 0; i < res.data.length; i++) {
+					let t = {
+						num: i + 1,
+						id: res.data[i].id,
+						inhand: res.data[i].inhand,
+						income: res.data[i].income,
+						net_worth: res.data[i].net_worth,
+						salary: res.data[i].salary,
+					};
+					temp.push(t);
+				}
+				setData(temp);
 			});
 		}
 		fetchData();
