@@ -8,10 +8,6 @@ export const CompanyNavbar = [
 		url: "/company-previousTransactions",
 	},
 	{
-		title: "See Statistics",
-		url: "/company-seeStatistics",
-	},
-	{
 		title: "Create Vacancies",
 		url: "/createVacancy",
 	},
