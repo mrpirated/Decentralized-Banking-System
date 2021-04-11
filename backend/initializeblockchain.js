@@ -1,5 +1,5 @@
 const { LMS, web3 } = require("./web3conn");
-const inilializeblockchain = async () => {
+const yearly = async () => {
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
 
@@ -7,5 +7,11 @@ const inilializeblockchain = async () => {
 		from: accounts[0],
 	});
 };
-
-module.exports = inilializeblockchain;
+const monthly = async () => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	await lms.monthly({
+		from: accounts[0],
+	});
+};
+module.exports = { yearly, monthly };

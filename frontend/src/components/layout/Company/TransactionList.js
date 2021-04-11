@@ -5,11 +5,11 @@ export const columns = [
 	},
 	{
 		title: "Transaction ID",
-		field: "transactionId",
+		field: "id",
 	},
 	{
 		title: "From",
-		field: "fromId",
+		field: "fromid",
 	},
 	// {
 	// 	title: "Barcode",
@@ -17,14 +17,14 @@ export const columns = [
 	// },
 	{
 		title: "To",
-		field: "toId",
-    },
+		field: "toid",
+	},
 	{
 		title: "Amount",
 		field: "amount",
 	},
 	{
-		title: "TimeStamp",
-		field: "timestamp",
-	}
+		title: "Success",
+		field: "success",
+	},
 ];
