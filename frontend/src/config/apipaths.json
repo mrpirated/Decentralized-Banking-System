@@ -10,5 +10,6 @@
 	"getProducts": "http://localhost:4141/api/getProducts",
 	"productPurchase": "http://localhost:4141/api/productPurchase",
 	"getGovtInfo": "http://localhost:4141/api/getGovtInfo",
-	"takeloan": "http://localhost:4141/api/takeloan"
+	"takeloan": "http://localhost:4141/api/takeloan",
+	"getCompanyTransactions": "http://localhost:4141/api/getCompanyTransactions"
 }

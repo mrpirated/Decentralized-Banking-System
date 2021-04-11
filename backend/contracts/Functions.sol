@@ -12,7 +12,7 @@ contract Functions is Global{
     function payTaxes()external{
         for(uint i=0;i<decentralizedBank.users.length;i++){
             if(users[decentralizedBank.users[i]].isUser){
-            transaction_count++;
+            
             int256 amount=0;
             if(users[decentralizedBank.users[i]].income>250000){
                 if(users[decentralizedBank.users[i]].income>500000){
@@ -27,6 +27,8 @@ contract Functions is Global{
                     amount+=(users[decentralizedBank.users[i]].income-250000)*5/100;
                 }
             }
+            if(amount!=0){
+            transaction_count++;
             bytes32  tid = stringToBytes32(string(abi.encodePacked("tax",uint2str(transaction_count),"_0")));
             Transaction memory newtransaction=Transaction(tid,true,decentralizedBank.users[i],"decentralizedBankid",amount,false,"");
             if(users[decentralizedBank.users[i]].inhand>=amount+(users[decentralizedBank.users[i]].tax_due)*4/100){
@@ -53,14 +55,16 @@ contract Functions is Global{
             }
             transactions[tid]=newtransaction;
             }
+            }
         }
         
         for(uint i=0;i<decentralizedBank.companies.length;i++){
             if(companies[decentralizedBank.companies[i]].isCompany){
-            transaction_count++;
+            //transaction_count++;
             int256 amount=0;
             amount+=(companies[decentralizedBank.companies[i]].income)*30/100;
-            
+            if(amount!=0){
+            transaction_count++;
             //amount+=companies[decentralizedBank.companies[i]].income*20/100;
             bytes32 tid = stringToBytes32(string(abi.encodePacked("tax",uint2str(transaction_count),"_1")));
             Transaction memory newtransaction=Transaction(tid,true,decentralizedBank.companies[i],"decentralizedBankid",amount,false,"");
@@ -87,6 +91,7 @@ contract Functions is Global{
                  companies[decentralizedBank.companies[i]].income=0;
             }
             transactions[tid]=newtransaction;
+            }
             }
         }
         

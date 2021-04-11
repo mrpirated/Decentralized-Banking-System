@@ -8,6 +8,7 @@ const {
 	getUserTransactions,
 	getUserInfo,
 	getGovtInfo,
+	getCompanyTransactions,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -21,5 +22,6 @@ router.get("/getlenders", getLenders);
 router.get("/getUserTransactions", getUserTransactions);
 router.get("/getUserInfo", getUserInfo);
 router.get("/getGovtInfo", getGovtInfo);
+router.get("/getCompanyTransactions", getCompanyTransactions);
 
 module.exports = router;

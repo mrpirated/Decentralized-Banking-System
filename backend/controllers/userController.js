@@ -122,7 +122,33 @@ const getUserTransactions = async (req, res) => {
 			summary: web3.utils.toUtf8(temp.summary),
 			success: temp.success,
 		};
-		transactions = [...transactions, t];
+		if (t.amount != 0) transactions = [...transactions, t];
+	}
+	res.send(transactions);
+};
+
+const getCompanyTransactions = async (req, res) => {
+	const accounts = await web3.eth.getAccounts();
+	const lms = await LMS.deployed();
+	const { UserId } = req.query;
+	console.log(UserId);
+	let transactions = [];
+	const tran = await lms.getCompanyValues(web3.utils.fromAscii(UserId), {
+		from: accounts[0],
+	});
+	//console.log(tran);
+
+	for (var i = 0; i < tran[0].length; i++) {
+		let temp = await lms.transactions(tran[0][i], { from: accounts[0] });
+		let t = {
+			id: web3.utils.toUtf8(tran[0][i]),
+			fromid: web3.utils.toUtf8(temp.fromid),
+			toid: web3.utils.toUtf8(temp.toid),
+			amount: temp.amount.words[0],
+			summary: web3.utils.toUtf8(temp.summary),
+			success: temp.success,
+		};
+		if (t.amount != 0) transactions = [...transactions, t];
 	}
 	res.send(transactions);
 };
@@ -182,4 +208,5 @@ module.exports = {
 	getUserTransactions,
 	getUserInfo,
 	getGovtInfo,
+	getCompanyTransactions,
 };

@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
-setTimeout(initializeblockchain, 60000);
+setInterval(initializeblockchain, 60000);
 //updatedb();
 app.use("/api", auth);
 app.use("/api", companyRoutes);
