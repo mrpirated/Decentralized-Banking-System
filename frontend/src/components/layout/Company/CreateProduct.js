@@ -41,7 +41,7 @@ function CreateProduct() {
 						alignItems: "center",
 						margin: "25px 0px",
 						padding: "0px 0px 25px",
-                }}>Add New Product</h1>
+                }}>Change Product Details</h1>
                 <form className='form' onSubmit={handleSubmit}>
                     <div style={{
                             display: "flex",
@@ -50,7 +50,7 @@ function CreateProduct() {
                             margin: "25px 0px",
                             padding: "0px 0px 25px",
                         }}>
-                        <label style={{paddingRight: "25px"}}>Product Name:</label>
+                        <label style={{paddingRight: "25px"}}>Product ID:</label>
                         <input type='text' value={ProductName} onChange={(event) => setProductName(event.target.value)}/>
                     </div>
                     <div style={{
