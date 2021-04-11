@@ -12,5 +12,6 @@
 	"getLenders": "http://localhost:4141/api/getLenders",
 	"getGovtInfo": "http://localhost:4141/api/getGovtInfo",
 	"takeloan": "http://localhost:4141/api/takeloan",
+	"getCompanyTransactions": "http://localhost:4141/api/getCompanyTransactions",
 	"recruitEmployee": "http://localhost:4141/api/recruitEmployee"
 }
