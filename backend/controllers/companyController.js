@@ -99,16 +99,16 @@ const getAllCompanies = async (req, res) => {
 			employees = [],
 			remaining_salary = [];
 		Object.keys(temp2[0]).map((key) => {
-			transactions.push(web.utils.toUtf8(temp2[0][key]));
+			transactions.push(web3.utils.toUtf8(temp2[0][key]));
 		});
 		Object.keys(temp2[1]).map((key) => {
-			employees.push(web.utils.toUtf8(temp2[1][key]));
+			employees.push(web3.utils.toUtf8(temp2[1][key]));
 		});
 		Object.keys(temp2[2]).map((key) => {
-			products.push(web.utils.toUtf8(temp2[2][key]));
+			products.push(web3.utils.toUtf8(temp2[2][key]));
 		});
 		Object.keys(temp2[3]).map((key) => {
-			remaining_salary.push(web.utils.toUtf8(temp2[3][key]));
+			remaining_salary.push(temp2[3][key].words[0]);
 		});
 
 		//console.log(temp);
