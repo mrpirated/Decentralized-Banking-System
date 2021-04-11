@@ -21,10 +21,19 @@ function SeeStatistics() {
 				};
 				setGovt(t);
 			});
-
+			console.log(config.getAllCompanies);
 			await axios.get(config.getAllCompanies).then((res) => {
 				console.log(res.data);
-				setData(res.data);
+				let temp = [];
+                    //console.log(items[0].Line);
+                    for (let i = 0; i < res.data.length; i++) {
+                        let t = {
+                            num: i + 1,
+                            userId: res.data[i].id
+                        };
+                        temp.push(t);
+                    }
+                    setData(temp);
 			});
 		}
 		fetchData();

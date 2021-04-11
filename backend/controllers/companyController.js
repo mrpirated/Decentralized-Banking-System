@@ -83,6 +83,7 @@ const changeProductDetails = async (req, res) => {
 };
 
 const getAllCompanies = async (req, res) => {
+	console.log("entered");
 	const accounts = await web3.eth.getAccounts();
 	const lms = await LMS.deployed();
 	const result = await lms.getBankValues({ from: accounts[0] });
