@@ -55,10 +55,9 @@ This Project has been developed under the event Hack36 -v4 (2021) of college Mot
 
 1. Login/Signup Facility for Companies
 2. Able to access previously done transactions
-3. Able to see Stats
-4. Can create vacancies
-5. Are able to recruit employee
-6. Can enter details about their own products and get them added to the Mart
+3. Can create vacancies
+4. Are able to recruit employee
+5. Can enter details about their own products and get them added to the Mart
 
 ## Contributors:
 
