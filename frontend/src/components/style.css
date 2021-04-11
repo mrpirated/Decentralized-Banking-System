@@ -21,3 +21,7 @@
   color: #ccc;
   border-right: 1px solid #ccc;
 }
+
+#nav a:hover {
+  background-color: #5993e5;
+}

@@ -19,7 +19,10 @@ function CreateVacancy() {
 				salary: Salary,
 				companyId: UserId,
 			})
-			.then((res) => console.log(res))
+			.then((res) => {
+				console.log(res);
+				alert(res.data);
+			})
 			.catch((err) => console.log(err));
 	};
 
